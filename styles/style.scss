@@ -128,9 +128,8 @@ $navy-blue: #3672d8;
     left: 25%;
     top: -10%;
     width: 50%;
-    height: 50%;
+    height: 200px;
     border-radius: 10px;
-    z-index: 100;
 }
 
 .product-name {
@@ -186,6 +185,17 @@ $navy-blue: #3672d8;
     background-color: $cream;
 }
 
+.black {
+    background-color: $black;
+}
+
+.pink {
+    background-color: $pink;
+}
+
+.white{
+    background-color: $white;
+}
 .price {
     font-weight: bold;
 }
@@ -199,7 +209,7 @@ $navy-blue: #3672d8;
     font-size: 16px;
     cursor: pointer;
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     margin-top: 10px;
     border-radius: 2px;
     display: none;

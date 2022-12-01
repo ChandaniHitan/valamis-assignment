@@ -14,7 +14,7 @@ const chairArray = [
         name: 'White Comfy',
         description: 'Exquisite gently curving lines with wood tipped legs',
         price: '$54,83',
-        colorOptions: ['blue', 'dark-brown'],
+        colorOptions: ['white','blue','brown'],
         src: '/images/white-comfy.png'
     },
     {
@@ -46,7 +46,7 @@ const chairArray = [
         name: 'Lavenderia',
         description: 'Cabriole shield back chair with scroll arm supports',
         price: '$29,98',
-        colorOptions: ['cream', 'brown'],
+        colorOptions: ['cream', 'brown', 'blue'],
         src: '/images/green-chair.png'
     },
     {
@@ -86,7 +86,7 @@ const chairArray = [
         name: 'White Comfy',
         description: 'Exquisite gently curving lines with wood tipped legs',
         price: '$54,83',
-        colorOptions: ['blue', 'dark-brown'],
+        colorOptions: ['blue', 'brown', 'white'],
         src: '/images/white-comfy.png'
     },
     {
@@ -99,11 +99,14 @@ const chairArray = [
     },
 ]
 
+let numberOfItems = 0;
+
 /* Product card component */
 
 function mapProduct(product_list) {
     let products = "";
-    product_list.map((values, key) => {
+    console.log(product_list)
+    product_list.map((values) => {
         products += `<div class="product-container">
         <!-- Product image -->
         <div class="image">
@@ -116,7 +119,7 @@ function mapProduct(product_list) {
                 <p class="product-description">${values.description}</p>
                 <div class="last">
                     <div class="color-options">
-                        <span class= "dot ${values.colorOptions[0]}"></span>
+                        ${getColorOptions(values.colorOptions)}
                     </div>
                     <span class="price">${values.price}</span>
                 </div>
@@ -131,19 +134,18 @@ function mapProduct(product_list) {
 
 /* Display more items  */
 function renderInHtml(n = 4) {
-    let Product_list = chairArray.slice(0, 8 + n)
+    let Product_list = chairArray.slice(0,numberOfItems + n)
     mapProduct(Product_list);
+    numberOfItems+=4;
 }
 
-renderInHtml()
+renderInHtml();
 
 
 /* Responsive nav bar */
 const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('nav');
-const moreButton = document.getElementsByClassName('more-button');
-const moreItems = document.getElementsById('more-items');
 
 if (bar) {
     bar.addEventListener('click', () => {
@@ -158,8 +160,20 @@ if (close) {
 }
 
 /* Show more items */
+const moreButton = document.getElementsById('more-button');
 if (moreButton) {
     moreButton.addEventListener('click', () => {
         renderInHtml();
     })
 }
+
+/* Mapping colorOptions */
+
+function getColorOptions(colors){let value = "";
+for (let index = 0; index < colors.length; index++) {
+    value += `<span class= "dot ${colors[index]}"></span>`;
+}
+return value
+}
+
+
